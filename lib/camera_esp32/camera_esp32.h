@@ -5,7 +5,6 @@
 #include "esp_camera.h"
 #include "../SD_functions/SD_functions.h"
 
-
 /* Pin definition for CAMERA_MODEL_AI_THINKER */
 #define PWDN_GPIO_NUM 32
 #define RESET_GPIO_NUM -1
@@ -27,5 +26,7 @@
 void configInitCamera();
 
 void takeSavePhoto(String path);
+
+void capturePhotoSaveSpiffs();
 
 #endif /* camera_esp32.h */

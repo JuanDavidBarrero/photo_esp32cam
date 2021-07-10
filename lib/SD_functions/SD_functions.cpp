@@ -1,5 +1,8 @@
 #include "SD_functions.h"
 
+#define FILE_PHOTO "/photo.jpg"
+
+
 void initMicroSDCard()
 {
   // Start Micro SD card
@@ -15,4 +18,23 @@ void initMicroSDCard()
     Serial.println("No SD Card attached");
     return;
   }
+}
+
+
+void initSPIFFS()
+{
+  if (!SPIFFS.begin())
+  {
+    Serial.println("an error has occured with SPIFFS please check");
+    while (true)
+    {
+    }
+  }
+  Serial.println("SPIFFS mounted successfully !!");
+}
+
+bool checkPhoto( fs::FS &fs ) {
+  File f_pic = fs.open( FILE_PHOTO );
+  unsigned int pic_sz = f_pic.size();
+  return ( pic_sz > 100 );
 }
