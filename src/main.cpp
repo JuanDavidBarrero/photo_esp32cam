@@ -32,6 +32,8 @@ void setup()
 
   Serial.print("Initializing the camera module...");
   configInitCamera();
+  sensor_t * s = esp_camera_sensor_get();
+  s->set_vflip(s, 1);
   Serial.println("Ok!");
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
